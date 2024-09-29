@@ -9,10 +9,6 @@
       "recommended": true
     }
   },
-  "files": {
-    "include": ["src"],
-    "ignore": ["node_modules", "dist", "build"]
-  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -24,5 +20,13 @@
     "formatter": {
       "quoteStyle": "single"
     }
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "maxSize": 2097152
   }
 }

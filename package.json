@@ -12,7 +12,9 @@
     "format:fix": "biome format --write ./src",
     "lint": "biome lint ./src",
     "fix": "biome lint --write ./src",
-    "summary": "./lint-with-summary.sh"
+    "sum": "./lint-with-summary.sh",
+    "warn": "eslint --ext .ts,.js,.tsx --format stylish .",
+    "error": "eslint --ext .ts,.js,.tsx --quiet ."
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
