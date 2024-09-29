@@ -1,16 +1,16 @@
-import * as React from 'react';
-import dayjs, { type Dayjs } from 'dayjs';
-import Button from '@mui/material/Button';
 import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded';
+import Button from '@mui/material/Button';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import type { UseDateFieldProps } from '@mui/x-date-pickers/DateField';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import type {
   BaseSingleInputFieldProps,
   DateValidationError,
   FieldSection,
 } from '@mui/x-date-pickers/models';
+import dayjs, { type Dayjs } from 'dayjs';
+import * as React from 'react';
 
 interface ButtonFieldProps
   extends UseDateFieldProps<Dayjs, false>,
@@ -36,14 +36,14 @@ function ButtonField(props: ButtonFieldProps) {
 
   return (
     <Button
-      variant="outlined"
+      variant='outlined'
       id={id}
       disabled={disabled}
       ref={ref}
       aria-label={ariaLabel}
-      size="small"
+      size='small'
       onClick={() => setOpen?.((prev) => !prev)}
-      startIcon={<CalendarTodayRoundedIcon fontSize="small" />}
+      startIcon={<CalendarTodayRoundedIcon fontSize='small' />}
       sx={{ minWidth: 'fit-content' }}
     >
       {label ? `${label}` : 'Pick a date'}
@@ -63,7 +63,7 @@ export default function CustomDatePicker() {
         onChange={(newValue) => setValue(newValue)}
         slots={{ field: ButtonField }}
         slotProps={{
-          field: { setOpen } as any,
+          field: { setOpen } as never,
           nextIconButton: { size: 'small' },
           previousIconButton: { size: 'small' },
         }}

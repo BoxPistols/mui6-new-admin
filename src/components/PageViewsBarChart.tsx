@@ -1,40 +1,56 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
-import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { type Theme, useTheme } from '@mui/material/styles';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { useTheme } from '@mui/material/styles';
+import * as React from 'react';
+
+// Type guard function
+function isThemeWithVars(theme: Theme): theme is Theme & { vars: Theme } {
+  return 'vars' in theme;
+}
 
 export default function PageViewsBarChart() {
   const theme = useTheme();
-  const colorPalette = [
-    (theme.vars || theme).palette.primary.dark,
-    (theme.vars || theme).palette.primary.main,
-    (theme.vars || theme).palette.primary.light,
-  ];
+
+  const colorPalette = React.useMemo(() => {
+    if (isThemeWithVars(theme)) {
+      return [
+        theme.vars.palette.primary.dark,
+        theme.vars.palette.primary.main,
+        theme.vars.palette.primary.light,
+      ];
+    }
+    return [
+      theme.palette.primary.dark,
+      theme.palette.primary.main,
+      theme.palette.primary.light,
+    ];
+  }, [theme]);
+
   return (
-    <Card variant="outlined" sx={{ width: '100%' }}>
+    <Card variant='outlined' sx={{ width: '100%' }}>
       <CardContent>
-        <Typography component="h2" variant="subtitle2" gutterBottom>
+        <Typography component='h2' variant='subtitle2' gutterBottom>
           Page views and downloads
         </Typography>
         <Stack sx={{ justifyContent: 'space-between' }}>
           <Stack
-            direction="row"
+            direction='row'
             sx={{
               alignContent: { xs: 'center', sm: 'flex-start' },
               alignItems: 'center',
               gap: 1,
             }}
           >
-            <Typography variant="h4" component="p">
+            <Typography variant='h4' component='p'>
               1.3M
             </Typography>
-            <Chip size="small" color="error" label="-8%" />
+            <Chip size='small' color='error' label='-8%' />
           </Stack>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+          <Typography variant='caption' sx={{ color: 'text.secondary' }}>
             Page views and downloads for the last 6 months
           </Typography>
         </Stack>
@@ -48,7 +64,7 @@ export default function PageViewsBarChart() {
                 categoryGapRatio: 0.5,
                 data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
               },
-            ] as any
+            ] as never
           }
           series={[
             {
