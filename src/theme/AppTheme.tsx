@@ -34,9 +34,27 @@ type ThemeValueType =
 
 type ThemePropertyPath = (string | number)[];
 
+// カスタム型を定義して vars プロパティを含める
+interface ThemeWithVars extends Theme {
+  vars?: {
+    palette: Theme['palette'];
+  };
+}
+
+// 型ガード関数
+function isThemeWithVars(theme: Theme): theme is ThemeWithVars {
+  return 'vars' in theme;
+}
+
 function getThemeValue(theme: Theme, path: ThemePropertyPath): ThemeValueType {
-  let value: ThemeValueType = theme.vars?.palette;
-  let fallbackValue: ThemeValueType = theme.palette;
+  let value: ThemeValueType;
+  let fallbackValue: ThemeValueType = theme.palette as ThemeValueType;
+
+  if (isThemeWithVars(theme) && theme.vars) {
+    value = theme.vars.palette as unknown as ThemeValueType;
+  } else {
+    value = theme.palette as ThemeValueType;
+  }
 
   for (const key of path) {
     if (typeof value === 'object' && value !== null) {
