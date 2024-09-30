@@ -1,4 +1,10 @@
-import { createTheme, alpha, type PaletteMode, type Shadows } from '@mui/material/styles';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import {
+  type PaletteMode,
+  type Shadows,
+  alpha,
+  createTheme,
+} from '@mui/material/styles';
 
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {
@@ -52,8 +58,8 @@ export const gray = {
   500: 'hsl(220, 20%, 42%)',
   600: 'hsl(220, 20%, 35%)',
   700: 'hsl(220, 20%, 25%)',
-  800: 'hsl(220, 30%, 6%)',
-  900: 'hsl(220, 35%, 3%)',
+  800: 'hsl(220, 30%, 18%)',
+  900: 'hsl(220, 35%, 12%)',
 };
 
 export const green = {
@@ -165,13 +171,19 @@ export const getDesignTokens = (mode: PaletteMode) => {
       background: {
         default: 'hsl(0, 0%, 99%)',
         paper: 'hsl(220, 35%, 97%)',
-        ...(mode === 'dark' && { default: gray[900], paper: 'hsl(220, 30%, 7%)' }),
+        ...(mode === 'dark' && {
+          default: gray[800],
+          paper: 'hsl(220, 30%, 20%)',
+        }),
       },
       text: {
         primary: gray[800],
         secondary: gray[600],
         warning: orange[400],
-        ...(mode === 'dark' && { primary: 'hsl(0, 0%, 100%)', secondary: gray[400] }),
+        ...(mode === 'dark' && {
+          primary: 'hsl(0, 0%, 100%)',
+          secondary: gray[400],
+        }),
       },
       action: {
         hover: alpha(gray[200], 0.2),
@@ -323,8 +335,9 @@ export const colorSchemes = {
       },
       divider: alpha(gray[700], 0.6),
       background: {
-        default: gray[900],
-        paper: 'hsl(220, 30%, 7%)',
+        default: gray[800],
+        // paper: 'hsl(220, 30%, 7%)',
+        paper: 'hsl(220, 30%, 20%)',
       },
       text: {
         primary: 'hsl(0, 0%, 100%)',
@@ -394,6 +407,8 @@ export const shape = {
   borderRadius: 8,
 };
 
-// @ts-ignore
-const defaultShadows: Shadows = ['var(--mui-palette-baseShadow)', ...defaultTheme.shadows.slice(1)];
+const defaultShadows: Shadows = defaultTheme.shadows.map((shadow, index) =>
+  index === 0 ? 'none' : shadow,
+) as Shadows;
+
 export const shadows = defaultShadows;

@@ -38,6 +38,7 @@ type ThemePropertyPath = (string | number)[];
 interface ThemeWithVars extends Theme {
   vars?: {
     palette: Theme['palette'];
+    shape: Theme['shape'];
   };
 }
 

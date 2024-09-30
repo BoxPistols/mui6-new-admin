@@ -1,7 +1,6 @@
-import * as React from 'react';
-import type { PaletteMode } from '@mui/material/styles';
-import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded';
+import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
+import type { PaletteMode } from '@mui/material/styles';
 import MenuButton, { type MenuButtonProps } from './MenuButton';
 
 interface ToggleColorModeProps extends MenuButtonProps {
