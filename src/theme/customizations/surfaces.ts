@@ -1,5 +1,5 @@
-import { type Components, type Theme, alpha } from '@mui/material/styles';
-import { gray } from '../themePrimitives';
+import { type Components, type Theme, alpha } from '@mui/material/styles'
+import { gray } from '../themePrimitives'
 
 export const surfacesCustomizations: Components<Theme> = {
   MuiAccordion: {
@@ -83,7 +83,7 @@ export const surfacesCustomizations: Components<Theme> = {
               },
             },
           ],
-        };
+        }
       },
     },
   },
@@ -109,4 +109,4 @@ export const surfacesCustomizations: Components<Theme> = {
       },
     },
   },
-};
+}

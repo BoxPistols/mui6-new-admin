@@ -1,17 +1,17 @@
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import MuiDrawer, { drawerClasses } from '@mui/material/Drawer';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import * as React from 'react';
-import CardAlert from './CardAlert';
-import MenuContent from './MenuContent';
-import OptionsMenu from './OptionsMenu';
-import SelectContent from './SelectContent';
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+import MuiDrawer, { drawerClasses } from '@mui/material/Drawer'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
+import * as React from 'react'
+import CardAlert from './CardAlert'
+import MenuContent from './MenuContent'
+import OptionsMenu from './OptionsMenu'
+import SelectContent from './SelectContent'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const Drawer = styled(MuiDrawer)({
   width: drawerWidth,
@@ -22,7 +22,7 @@ const Drawer = styled(MuiDrawer)({
     width: drawerWidth,
     boxSizing: 'border-box',
   },
-});
+})
 
 export default function SideMenu() {
   return (
@@ -77,5 +77,5 @@ export default function SideMenu() {
         <OptionsMenu />
       </Stack>
     </Drawer>
-  );
+  )
 }

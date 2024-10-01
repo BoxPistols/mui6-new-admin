@@ -4,37 +4,37 @@ import {
   type Shadows,
   alpha,
   createTheme,
-} from '@mui/material/styles';
+} from '@mui/material/styles'
 
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {
-    highlighted: true;
+    highlighted: true
   }
 }
 declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
+    50: string
+    100: string
+    200: string
+    300: string
+    400: string
+    500: string
+    600: string
+    700: string
+    800: string
+    900: string
   }
 
   interface PaletteColor extends ColorRange {}
 
   interface Palette {
-    baseShadow: string;
+    baseShadow: string
   }
 }
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme()
 
-const customShadows: Shadows = [...defaultTheme.shadows];
+const customShadows: Shadows = [...defaultTheme.shadows]
 
 export const brand = {
   50: 'hsl(210, 100%, 95%)',
@@ -47,7 +47,7 @@ export const brand = {
   700: 'hsl(210, 100%, 35%)',
   800: 'hsl(210, 100%, 16%)',
   900: 'hsl(210, 100%, 21%)',
-};
+}
 
 export const gray = {
   50: 'hsl(220, 35%, 97%)',
@@ -60,7 +60,7 @@ export const gray = {
   700: 'hsl(220, 20%, 25%)',
   800: 'hsl(220, 30%, 18%)',
   900: 'hsl(220, 35%, 12%)',
-};
+}
 
 export const green = {
   50: 'hsl(120, 80%, 98%)',
@@ -73,7 +73,7 @@ export const green = {
   700: 'hsl(120, 75%, 16%)',
   800: 'hsl(120, 84%, 10%)',
   900: 'hsl(120, 87%, 6%)',
-};
+}
 
 export const orange = {
   50: 'hsl(45, 100%, 97%)',
@@ -86,7 +86,7 @@ export const orange = {
   700: 'hsl(45, 94%, 20%)',
   800: 'hsl(45, 95%, 16%)',
   900: 'hsl(45, 93%, 12%)',
-};
+}
 
 export const red = {
   50: 'hsl(0, 100%, 97%)',
@@ -99,13 +99,13 @@ export const red = {
   700: 'hsl(0, 94%, 18%)',
   800: 'hsl(0, 95%, 12%)',
   900: 'hsl(0, 93%, 6%)',
-};
+}
 
 export const getDesignTokens = (mode: PaletteMode) => {
   customShadows[1] =
     mode === 'dark'
       ? 'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px'
-      : 'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px';
+      : 'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px'
 
   return {
     palette: {
@@ -247,8 +247,8 @@ export const getDesignTokens = (mode: PaletteMode) => {
       borderRadius: 8,
     },
     shadows: customShadows,
-  };
-};
+  }
+}
 
 export const colorSchemes = {
   light: {
@@ -351,7 +351,7 @@ export const colorSchemes = {
         'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
     },
   },
-};
+}
 
 export const typography = {
   fontFamily: ['"Inter", "sans-serif"'].join(','),
@@ -401,14 +401,14 @@ export const typography = {
     fontSize: defaultTheme.typography.pxToRem(12),
     fontWeight: 400,
   },
-};
+}
 
 export const shape = {
   borderRadius: 8,
-};
+}
 
 const defaultShadows: Shadows = defaultTheme.shadows.map((shadow, index) =>
   index === 0 ? 'none' : shadow,
-) as Shadows;
+) as Shadows
 
-export const shadows = defaultShadows;
+export const shadows = defaultShadows

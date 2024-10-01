@@ -1,13 +1,13 @@
-import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
-import { buttonBaseClasses } from '@mui/material/ButtonBase';
-import { menuItemClasses } from '@mui/material/MenuItem';
-import { selectClasses } from '@mui/material/Select';
-import type { SvgIconProps } from '@mui/material/SvgIcon';
-import { tabClasses } from '@mui/material/Tab';
-import { type Components, type Theme, alpha } from '@mui/material/styles';
-import { forwardRef } from 'react';
-import { brand, gray } from '../themePrimitives';
-import { themeVar } from './themeUtils';
+import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded'
+import { buttonBaseClasses } from '@mui/material/ButtonBase'
+import { menuItemClasses } from '@mui/material/MenuItem'
+import { selectClasses } from '@mui/material/Select'
+import type { SvgIconProps } from '@mui/material/SvgIcon'
+import { tabClasses } from '@mui/material/Tab'
+import { type Components, type Theme, alpha } from '@mui/material/styles'
+import { forwardRef } from 'react'
+import { brand, gray } from '../themePrimitives'
+import { themeVar } from './themeUtils'
 
 export const navigationCustomizations: Components<Theme> = {
   MuiMenuItem: {
@@ -273,4 +273,4 @@ export const navigationCustomizations: Components<Theme> = {
       }),
     },
   },
-};
+}

@@ -1,33 +1,29 @@
-import Avatar from '@mui/material/Avatar';
-import Chip from '@mui/material/Chip';
-import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
-import type {
-  GridCellParams,
-  GridColDef,
-  GridRowsProp,
-} from '@mui/x-data-grid';
+import Avatar from '@mui/material/Avatar'
+import Chip from '@mui/material/Chip'
+import { SparkLineChart } from '@mui/x-charts/SparkLineChart'
+import type { GridCellParams, GridColDef, GridRowsProp } from '@mui/x-data-grid'
 
 function getDaysInMonth(month: number, year: number) {
-  const date = new Date(year, month, 0);
+  const date = new Date(year, month, 0)
   const monthName = date.toLocaleDateString('en-US', {
     month: 'short',
-  });
-  const daysInMonth = date.getDate();
-  const days = [];
-  let i = 1;
+  })
+  const daysInMonth = date.getDate()
+  const days = []
+  let i = 1
   while (days.length < daysInMonth) {
-    days.push(`${monthName} ${i}`);
-    i += 1;
+    days.push(`${monthName} ${i}`)
+    i += 1
   }
-  return days;
+  return days
 }
 
 function renderSparklineCell(params: GridCellParams<number[], unknown>) {
-  const data = getDaysInMonth(4, 2024);
-  const { value, colDef } = params;
+  const data = getDaysInMonth(4, 2024)
+  const { value, colDef } = params
 
   if (!value || !Array.isArray(value) || value.length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -46,16 +42,16 @@ function renderSparklineCell(params: GridCellParams<number[], unknown>) {
         }}
       />
     </div>
-  );
+  )
 }
 
 function renderStatus(status: 'Online' | 'Offline') {
   const colors: { [index: string]: 'success' | 'default' } = {
     Online: 'success',
     Offline: 'default',
-  };
+  }
 
-  return <Chip label={status} color={colors[status]} size="small" />;
+  return <Chip label={status} color={colors[status]} size="small" />
 }
 
 export function renderAvatar(
@@ -66,7 +62,7 @@ export function renderAvatar(
     typeof params.value !== 'object' ||
     typeof (params.value as { color: string }).color !== 'string'
   ) {
-    return '';
+    return ''
   }
 
   return (
@@ -83,7 +79,7 @@ export function renderAvatar(
         ? (params.value as { name: string }).name.toUpperCase().substring(0, 1)
         : ''}
     </Avatar>
-  );
+  )
 }
 
 export const columns: GridColDef[] = [
@@ -134,7 +130,7 @@ export const columns: GridColDef[] = [
     minWidth: 150,
     renderCell: renderSparklineCell,
   },
-];
+]
 
 export const rows: GridRowsProp = [
   {
@@ -656,4 +652,4 @@ export const rows: GridRowsProp = [
       834442, 856664, 878886,
     ],
   },
-];
+]

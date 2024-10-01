@@ -1,4 +1,4 @@
-import SvgIcon from '@mui/material/SvgIcon';
+import SvgIcon from '@mui/material/SvgIcon'
 
 export function SitemarkIcon() {
   return (
@@ -49,7 +49,7 @@ export function SitemarkIcon() {
         />
       </svg>
     </SvgIcon>
-  );
+  )
 }
 
 export function IndiaFlag() {
@@ -116,7 +116,7 @@ export function IndiaFlag() {
         </defs>
       </svg>
     </SvgIcon>
-  );
+  )
 }
 
 export function UsaFlag() {
@@ -194,7 +194,7 @@ export function UsaFlag() {
         </defs>
       </svg>
     </SvgIcon>
-  );
+  )
 }
 export function BrazilFlag() {
   return (
@@ -307,7 +307,7 @@ export function BrazilFlag() {
         </defs>
       </svg>
     </SvgIcon>
-  );
+  )
 }
 
 export function GlobeFlag() {
@@ -340,5 +340,5 @@ export function GlobeFlag() {
         </defs>
       </svg>
     </SvgIcon>
-  );
+  )
 }

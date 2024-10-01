@@ -1,15 +1,15 @@
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid2';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import Copyright from '../internals/components/Copyright';
-import ChartUserByCountry from './ChartUserByCountry';
-import CustomizedDataGrid from './CustomizedDataGrid';
-import CustomizedTreeView from './CustomizedTreeView';
-import HighlightedCard from './HighlightedCard';
-import PageViewsBarChart from './PageViewsBarChart';
-import SessionsChart from './SessionsChart';
-import StatCard, { type StatCardProps } from './StatCard';
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid2'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import Copyright from '../internals/components/Copyright'
+import ChartUserByCountry from './ChartUserByCountry'
+import CustomizedDataGrid from './CustomizedDataGrid'
+import CustomizedTreeView from './CustomizedTreeView'
+import HighlightedCard from './HighlightedCard'
+import PageViewsBarChart from './PageViewsBarChart'
+import SessionsChart from './SessionsChart'
+import StatCard, { type StatCardProps } from './StatCard'
 
 const data: StatCardProps[] = [
   {
@@ -43,7 +43,7 @@ const data: StatCardProps[] = [
       530, 520, 410, 530, 520, 610, 530, 520, 610, 530, 420, 510, 430, 520, 510,
     ],
   },
-];
+]
 
 export default function MainGrid() {
   return (
@@ -89,5 +89,5 @@ export default function MainGrid() {
       </Grid>
       <Copyright sx={{ my: 4 }} />
     </Box>
-  );
+  )
 }

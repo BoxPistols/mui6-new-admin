@@ -1,19 +1,19 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { type Theme, useTheme } from '@mui/material/styles';
-import { BarChart } from '@mui/x-charts/BarChart';
-import * as React from 'react';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Chip from '@mui/material/Chip'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { type Theme, useTheme } from '@mui/material/styles'
+import { BarChart } from '@mui/x-charts/BarChart'
+import * as React from 'react'
 
 // Type guard function
 function isThemeWithVars(theme: Theme): theme is Theme & { vars: Theme } {
-  return 'vars' in theme;
+  return 'vars' in theme
 }
 
 export default function PageViewsBarChart() {
-  const theme = useTheme();
+  const theme = useTheme()
 
   const colorPalette = React.useMemo(() => {
     if (isThemeWithVars(theme)) {
@@ -21,14 +21,14 @@ export default function PageViewsBarChart() {
         theme.vars.palette.primary.dark,
         theme.vars.palette.primary.main,
         theme.vars.palette.primary.light,
-      ];
+      ]
     }
     return [
       theme.palette.primary.dark,
       theme.palette.primary.main,
       theme.palette.primary.light,
-    ];
-  }, [theme]);
+    ]
+  }, [theme])
 
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
@@ -97,5 +97,5 @@ export default function PageViewsBarChart() {
         />
       </CardContent>
     </Card>
-  );
+  )
 }

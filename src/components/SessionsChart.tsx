@@ -1,11 +1,11 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
-import { LineChart } from '@mui/x-charts/LineChart';
-import * as React from 'react';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Chip from '@mui/material/Chip'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
+import { LineChart } from '@mui/x-charts/LineChart'
+import * as React from 'react'
 
 function AreaGradient({ color, id }: { color: string; id: string }) {
   return (
@@ -15,33 +15,33 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
         <stop offset="100%" stopColor={color} stopOpacity={0} />
       </linearGradient>
     </defs>
-  );
+  )
 }
 
 function getDaysInMonth(month: number, year: number) {
-  const date = new Date(year, month, 0);
+  const date = new Date(year, month, 0)
   const monthName = date.toLocaleDateString('en-US', {
     month: 'short',
-  });
-  const daysInMonth = date.getDate();
-  const days = [];
-  let i = 1;
+  })
+  const daysInMonth = date.getDate()
+  const days = []
+  let i = 1
   while (days.length < daysInMonth) {
-    days.push(`${monthName} ${i}`);
-    i += 1;
+    days.push(`${monthName} ${i}`)
+    i += 1
   }
-  return days;
+  return days
 }
 
 export default function SessionsChart() {
-  const theme = useTheme();
-  const data = getDaysInMonth(4, 2024);
+  const theme = useTheme()
+  const data = getDaysInMonth(4, 2024)
 
   const colorPalette = [
     theme.palette.primary.light,
     theme.palette.primary.main,
     theme.palette.primary.dark,
-  ];
+  ]
 
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
@@ -146,5 +146,5 @@ export default function SessionsChart() {
         </LineChart>
       </CardContent>
     </Card>
-  );
+  )
 }

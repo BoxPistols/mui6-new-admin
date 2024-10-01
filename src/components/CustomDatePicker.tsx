@@ -1,16 +1,16 @@
-import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded';
-import Button from '@mui/material/Button';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import type { UseDateFieldProps } from '@mui/x-date-pickers/DateField';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded'
+import Button from '@mui/material/Button'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import type { UseDateFieldProps } from '@mui/x-date-pickers/DateField'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import type {
   BaseSingleInputFieldProps,
   DateValidationError,
   FieldSection,
-} from '@mui/x-date-pickers/models';
-import dayjs, { type Dayjs } from 'dayjs';
-import * as React from 'react';
+} from '@mui/x-date-pickers/models'
+import dayjs, { type Dayjs } from 'dayjs'
+import * as React from 'react'
 
 interface ButtonFieldProps
   extends UseDateFieldProps<Dayjs, false>,
@@ -21,7 +21,7 @@ interface ButtonFieldProps
       false,
       DateValidationError
     > {
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 function ButtonField(props: ButtonFieldProps) {
@@ -32,7 +32,7 @@ function ButtonField(props: ButtonFieldProps) {
     disabled,
     InputProps: { ref } = {},
     inputProps: { 'aria-label': ariaLabel } = {},
-  } = props;
+  } = props
 
   return (
     <Button
@@ -48,12 +48,12 @@ function ButtonField(props: ButtonFieldProps) {
     >
       {label ? `${label}` : 'Pick a date'}
     </Button>
-  );
+  )
 }
 
 export default function CustomDatePicker() {
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2023-04-17'));
-  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2023-04-17'))
+  const [open, setOpen] = React.useState(false)
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -73,5 +73,5 @@ export default function CustomDatePicker() {
         views={['day', 'month', 'year']}
       />
     </LocalizationProvider>
-  );
+  )
 }

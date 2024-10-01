@@ -1,28 +1,28 @@
-import { type Theme, ThemeProvider, createTheme } from '@mui/material/styles';
+import { type Theme, ThemeProvider, createTheme } from '@mui/material/styles'
 import type {
   PaletteColor,
   ThemeOptions,
   TypeBackground,
-} from '@mui/material/styles';
-import * as React from 'react';
-import { dataDisplayCustomizations } from './customizations/dataDisplay';
-import { feedbackCustomizations } from './customizations/feedback';
-import { inputsCustomizations } from './customizations/inputs';
-import { navigationCustomizations } from './customizations/navigation';
-import { surfacesCustomizations } from './customizations/surfaces';
-import { colorSchemes, shadows, shape, typography } from './themePrimitives';
+} from '@mui/material/styles'
+import * as React from 'react'
+import { dataDisplayCustomizations } from './customizations/dataDisplay'
+import { feedbackCustomizations } from './customizations/feedback'
+import { inputsCustomizations } from './customizations/inputs'
+import { navigationCustomizations } from './customizations/navigation'
+import { surfacesCustomizations } from './customizations/surfaces'
+import { colorSchemes, shadows, shape, typography } from './themePrimitives'
 
 interface AppThemeProps {
-  children: React.ReactNode;
-  disableCustomTheme?: boolean;
-  themeComponents?: ThemeOptions['components'];
+  children: React.ReactNode
+  disableCustomTheme?: boolean
+  themeComponents?: ThemeOptions['components']
 }
 
 type DeepPartial<T> = T extends object
   ? {
-      [P in keyof T]?: DeepPartial<T[P]>;
+      [P in keyof T]?: DeepPartial<T[P]>
     }
-  : T;
+  : T
 
 type ThemeValueType =
   | string
@@ -30,50 +30,50 @@ type ThemeValueType =
   | PaletteColor
   | TypeBackground
   | DeepPartial<PaletteColor>
-  | undefined;
+  | undefined
 
-type ThemePropertyPath = (string | number)[];
+type ThemePropertyPath = (string | number)[]
 
 // カスタム型を定義して vars プロパティを含める
 interface ThemeWithVars extends Theme {
   vars?: {
-    palette: Theme['palette'];
-    shape: Theme['shape'];
-  };
+    palette: Theme['palette']
+    shape: Theme['shape']
+  }
 }
 
 // 型ガード関数
 function isThemeWithVars(theme: Theme): theme is ThemeWithVars {
-  return 'vars' in theme;
+  return 'vars' in theme
 }
 
 function getThemeValue(theme: Theme, path: ThemePropertyPath): ThemeValueType {
-  let value: ThemeValueType;
-  let fallbackValue: ThemeValueType = theme.palette as ThemeValueType;
+  let value: ThemeValueType
+  let fallbackValue: ThemeValueType = theme.palette as ThemeValueType
 
   if (isThemeWithVars(theme) && theme.vars) {
-    value = theme.vars.palette as unknown as ThemeValueType;
+    value = theme.vars.palette as unknown as ThemeValueType
   } else {
-    value = theme.palette as ThemeValueType;
+    value = theme.palette as ThemeValueType
   }
 
   for (const key of path) {
     if (typeof value === 'object' && value !== null) {
-      value = value[key as keyof typeof value];
+      value = value[key as keyof typeof value]
     } else {
-      value = undefined;
+      value = undefined
     }
     if (typeof fallbackValue === 'object' && fallbackValue !== null) {
-      fallbackValue = fallbackValue[key as keyof typeof fallbackValue];
+      fallbackValue = fallbackValue[key as keyof typeof fallbackValue]
     } else {
-      fallbackValue = undefined;
+      fallbackValue = undefined
     }
     if (value === undefined && fallbackValue === undefined) {
-      return undefined;
+      return undefined
     }
   }
 
-  return value !== undefined ? value : fallbackValue;
+  return value !== undefined ? value : fallbackValue
 }
 
 export default function AppTheme({
@@ -83,7 +83,7 @@ export default function AppTheme({
 }: AppThemeProps) {
   const theme = React.useMemo(() => {
     if (disableCustomTheme) {
-      return createTheme();
+      return createTheme()
     }
 
     const baseTheme = createTheme({
@@ -103,33 +103,33 @@ export default function AppTheme({
         ...surfacesCustomizations,
         ...themeComponents,
       },
-    });
+    })
 
     const augmentedTheme = {
       ...baseTheme,
       getThemeValue: (path: ThemePropertyPath) =>
         getThemeValue(baseTheme, path),
-    };
+    }
 
-    return augmentedTheme;
-  }, [disableCustomTheme, themeComponents]);
+    return augmentedTheme
+  }, [disableCustomTheme, themeComponents])
 
   if (disableCustomTheme) {
-    return children;
+    return children
   }
 
   return (
     <ThemeProvider theme={theme} disableTransitionOnChange>
       {children}
     </ThemeProvider>
-  );
+  )
 }
 
 declare module '@mui/material/styles' {
   interface Theme {
-    getThemeValue: (path: ThemePropertyPath) => ThemeValueType;
+    getThemeValue: (path: ThemePropertyPath) => ThemeValueType
   }
   interface ThemeOptions {
-    getThemeValue?: (path: ThemePropertyPath) => ThemeValueType;
+    getThemeValue?: (path: ThemePropertyPath) => ThemeValueType
   }
 }

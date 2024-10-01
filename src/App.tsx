@@ -1,4 +1,4 @@
-import Dashboard from '@/Dashboard';
+import Dashboard from '@/Dashboard'
 
 function App() {
   return (
@@ -6,7 +6,7 @@ function App() {
       <div>Hello</div>
       <Dashboard />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

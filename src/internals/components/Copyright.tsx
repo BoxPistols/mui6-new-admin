@@ -1,9 +1,9 @@
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import type { SxProps } from '@mui/system';
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
+import type { SxProps } from '@mui/system'
 
 interface CopyrightProps {
-  sx?: SxProps;
+  sx?: SxProps
 }
 
 export default function Copyright(props: CopyrightProps) {
@@ -26,5 +26,5 @@ export default function Copyright(props: CopyrightProps) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }

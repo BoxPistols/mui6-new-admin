@@ -1,11 +1,11 @@
-import MenuItem from '@mui/material/MenuItem';
-import Select, { type SelectProps } from '@mui/material/Select';
-import { useColorScheme } from '@mui/material/styles';
+import MenuItem from '@mui/material/MenuItem'
+import Select, { type SelectProps } from '@mui/material/Select'
+import { useColorScheme } from '@mui/material/styles'
 
 export default function ColorModeSelect(props: SelectProps) {
-  const { mode, setMode } = useColorScheme();
+  const { mode, setMode } = useColorScheme()
   if (!mode) {
-    return null;
+    return null
   }
   return (
     <Select
@@ -20,5 +20,5 @@ export default function ColorModeSelect(props: SelectProps) {
       <MenuItem value="light">Light</MenuItem>
       <MenuItem value="dark">Dark</MenuItem>
     </Select>
-  );
+  )
 }
