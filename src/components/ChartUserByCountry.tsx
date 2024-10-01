@@ -1,19 +1,21 @@
-import * as React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Box from '@mui/material/Box';
+import LinearProgress, {
+  linearProgressClasses,
+} from '@mui/material/LinearProgress';
 import Stack from '@mui/material/Stack';
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import { PieChart } from '@mui/x-charts/PieChart';
+import { useDrawingArea } from '@mui/x-charts/hooks';
+import * as React from 'react';
 
 import {
-  IndiaFlag,
-  UsaFlag,
   BrazilFlag,
   GlobeFlag,
+  IndiaFlag,
+  UsaFlag,
 } from '../internals/components/CustomIcons';
 
 const data = [
@@ -158,9 +160,9 @@ export default function ChartUserByCountry() {
             <PieCenterLabel primaryText="98.5K" secondaryText="Total" />
           </PieChart>
         </Box>
-        {countries.map((country, index) => (
+        {countries.map((country) => (
           <Stack
-            key={index}
+            key={country.name}
             direction="row"
             sx={{ alignItems: 'center', gap: 2, pb: 2 }}
           >

@@ -1,17 +1,11 @@
-import * as React from 'react';
-import clsx from 'clsx';
-import { animated, useSpring } from '@react-spring/web';
-import type { TransitionProps } from '@mui/material/transitions';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Collapse from '@mui/material/Collapse';
 import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
+import type { TransitionProps } from '@mui/material/transitions';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import {
-  unstable_useTreeItem2 as useTreeItem2,
-  type UseTreeItem2Parameters,
-} from '@mui/x-tree-view/useTreeItem2';
 import {
   TreeItem2Content,
   TreeItem2IconContainer,
@@ -21,7 +15,13 @@ import {
 import { TreeItem2Icon } from '@mui/x-tree-view/TreeItem2Icon';
 import { TreeItem2Provider } from '@mui/x-tree-view/TreeItem2Provider';
 import type { TreeViewBaseItem } from '@mui/x-tree-view/models';
-import { useTheme } from '@mui/material/styles';
+import {
+  type UseTreeItem2Parameters,
+  unstable_useTreeItem2 as useTreeItem2,
+} from '@mui/x-tree-view/useTreeItem2';
+import { animated, useSpring } from '@react-spring/web';
+import clsx from 'clsx';
+import * as React from 'react';
 
 type Color = 'blue' | 'green';
 
@@ -77,6 +77,7 @@ function DotIcon({ color }: { color: string }) {
   return (
     <Box sx={{ marginRight: 1, display: 'flex', alignItems: 'center' }}>
       <svg width={6} height={6}>
+        <title>Dot icon</title>
         <circle cx={3} cy={3} r={3} fill={color} />
       </svg>
     </Box>
@@ -102,7 +103,7 @@ interface CustomLabelProps {
   expandable?: boolean;
 }
 
-function CustomLabel({ color, expandable, children, ...other }: CustomLabelProps) {
+function CustomLabel({ color, children, ...other }: CustomLabelProps) {
   const theme = useTheme();
   const colors = {
     blue: (theme.vars || theme).palette.primary.main,

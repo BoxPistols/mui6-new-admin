@@ -1,4 +1,3 @@
-import * as React from 'react';
 import SvgIcon from '@mui/material/SvgIcon';
 
 export function SitemarkIcon() {
@@ -11,6 +10,7 @@ export function SitemarkIcon() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <title>Sitemark Icon</title>
         <path
           fill="#B4C0D3"
           d="m.787 12.567 6.055-2.675 3.485 2.006.704 6.583-4.295-.035.634-4.577-.74-.422-3.625 2.817-2.218-3.697Z"
@@ -55,7 +55,13 @@ export function SitemarkIcon() {
 export function IndiaFlag() {
   return (
     <SvgIcon>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+      >
+        <title>India Flag</title>
         <g clipPath="url(#a)">
           <mask
             id="b"
@@ -123,6 +129,7 @@ export function UsaFlag() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <title>USA Flag</title>
         <g clipPath="url(#clip0_983_1725)">
           <path
             fillRule="evenodd"
@@ -199,6 +206,11 @@ export function BrazilFlag() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <title>Globe Flag</title>
+        <title>Globe Flag</title>
+        <title>Globe Flag</title>
+        <title>Globe Flag</title>
+        <title>Globe Flag</title>
         <g clipPath="url(#clip0_983_1741)">
           <path
             fillRule="evenodd"
@@ -308,6 +320,7 @@ export function GlobeFlag() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <title>Globe Flag</title>
         <g clipPath="url(#clip0_986_1789)">
           <circle cx="12" cy="12.5" r="12" fill="#007FFF" />
           <path
@@ -317,7 +330,12 @@ export function GlobeFlag() {
         </g>
         <defs>
           <clipPath id="clip0_986_1789">
-            <rect width="24" height="24" fill="white" transform="translate(0 0.5)" />
+            <rect
+              width="24"
+              height="24"
+              fill="white"
+              transform="translate(0 0.5)"
+            />
           </clipPath>
         </defs>
       </svg>
