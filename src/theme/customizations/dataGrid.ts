@@ -11,7 +11,6 @@ import type { DataGridProComponents } from '@mui/x-data-grid-pro/themeAugmentati
 import type { DataGridComponents } from '@mui/x-data-grid/themeAugmentation';
 import { gray } from '../.././theme/themePrimitives';
 
-/* eslint-disable import/prefer-default-export */
 export const dataGridCustomizations: DataGridProComponents<Theme> &
   DataGridComponents<Theme> = {
   MuiDataGrid: {

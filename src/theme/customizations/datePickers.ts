@@ -9,7 +9,6 @@ import type { PickersProComponents } from '@mui/x-date-pickers-pro/themeAugmenta
 import type { PickerComponents } from '@mui/x-date-pickers/themeAugmentation';
 import { brand, gray } from '../.././theme/themePrimitives';
 
-/* eslint-disable import/prefer-default-export */
 export const datePickersCustomizations: PickersProComponents<Theme> &
   PickerComponents<Theme> = {
   MuiPickersPopper: {

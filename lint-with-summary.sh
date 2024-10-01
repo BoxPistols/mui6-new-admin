@@ -26,9 +26,9 @@ echo "$output"
 
 # Print the summary
 echo "------------------------------"
-echo "Lint Summary:"
-echo "Warnings: $warnings"
-echo "Errors: $errors"
+# echo "Lint Summary:"
+# echo "Warnings: $warnings"
+# echo "Errors: $errors"
 
 # Exit with non-zero status if there are errors
 if [ "$errors" -gt 0 ]; then
