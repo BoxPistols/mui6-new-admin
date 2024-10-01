@@ -1,8 +1,8 @@
-import * as React from 'react';
-import FormControl from '@mui/material/FormControl';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
+import FormControl from '@mui/material/FormControl'
+import InputAdornment from '@mui/material/InputAdornment'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import * as React from 'react'
 
 export default function Search() {
   return (
@@ -22,5 +22,5 @@ export default function Search() {
         }}
       />
     </FormControl>
-  );
+  )
 }

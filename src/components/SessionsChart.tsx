@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Chip from '@mui/material/Chip';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import { LineChart } from '@mui/x-charts/LineChart';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Chip from '@mui/material/Chip'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
+import { LineChart } from '@mui/x-charts/LineChart'
+import * as React from 'react'
 
 function AreaGradient({ color, id }: { color: string; id: string }) {
   return (
@@ -15,33 +15,33 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
         <stop offset="100%" stopColor={color} stopOpacity={0} />
       </linearGradient>
     </defs>
-  );
+  )
 }
 
 function getDaysInMonth(month: number, year: number) {
-  const date = new Date(year, month, 0);
+  const date = new Date(year, month, 0)
   const monthName = date.toLocaleDateString('en-US', {
     month: 'short',
-  });
-  const daysInMonth = date.getDate();
-  const days = [];
-  let i = 1;
+  })
+  const daysInMonth = date.getDate()
+  const days = []
+  let i = 1
   while (days.length < daysInMonth) {
-    days.push(`${monthName} ${i}`);
-    i += 1;
+    days.push(`${monthName} ${i}`)
+    i += 1
   }
-  return days;
+  return days
 }
 
 export default function SessionsChart() {
-  const theme = useTheme();
-  const data = getDaysInMonth(4, 2024);
+  const theme = useTheme()
+  const data = getDaysInMonth(4, 2024)
 
   const colorPalette = [
     theme.palette.primary.light,
     theme.palette.primary.main,
     theme.palette.primary.dark,
-  ];
+  ]
 
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
@@ -86,9 +86,9 @@ export default function SessionsChart() {
               area: true,
               stackOrder: 'ascending',
               data: [
-                300, 900, 600, 1200, 1500, 1800, 2400, 2100, 2700, 3000, 1800, 3300,
-                3600, 3900, 4200, 4500, 3900, 4800, 5100, 5400, 4800, 5700, 6000,
-                6300, 6600, 6900, 7200, 7500, 7800, 8100,
+                300, 900, 600, 1200, 1500, 1800, 2400, 2100, 2700, 3000, 1800,
+                3300, 3600, 3900, 4200, 4500, 3900, 4800, 5100, 5400, 4800,
+                5700, 6000, 6300, 6600, 6900, 7200, 7500, 7800, 8100,
               ],
             },
             {
@@ -100,9 +100,9 @@ export default function SessionsChart() {
               area: true,
               stackOrder: 'ascending',
               data: [
-                500, 900, 700, 1400, 1100, 1700, 2300, 2000, 2600, 2900, 2300, 3200,
-                3500, 3800, 4100, 4400, 2900, 4700, 5000, 5300, 5600, 5900, 6200,
-                6500, 5600, 6800, 7100, 7400, 7700, 8000,
+                500, 900, 700, 1400, 1100, 1700, 2300, 2000, 2600, 2900, 2300,
+                3200, 3500, 3800, 4100, 4400, 2900, 4700, 5000, 5300, 5600,
+                5900, 6200, 6500, 5600, 6800, 7100, 7400, 7700, 8000,
               ],
             },
             {
@@ -113,9 +113,9 @@ export default function SessionsChart() {
               stack: 'total',
               stackOrder: 'ascending',
               data: [
-                1000, 1500, 1200, 1700, 1300, 2000, 2400, 2200, 2600, 2800, 2500,
-                3000, 3400, 3700, 3200, 3900, 4100, 3500, 4300, 4500, 4000, 4700,
-                5000, 5200, 4800, 5400, 5600, 5900, 6100, 6300,
+                1000, 1500, 1200, 1700, 1300, 2000, 2400, 2200, 2600, 2800,
+                2500, 3000, 3400, 3700, 3200, 3900, 4100, 3500, 4300, 4500,
+                4000, 4700, 5000, 5200, 4800, 5400, 5600, 5900, 6100, 6300,
               ],
               area: true,
             },
@@ -146,5 +146,5 @@ export default function SessionsChart() {
         </LineChart>
       </CardContent>
     </Card>
-  );
+  )
 }

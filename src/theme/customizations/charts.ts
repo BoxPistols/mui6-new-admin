@@ -1,9 +1,8 @@
-import type { Theme } from '@mui/material/styles';
-import { axisClasses, legendClasses, chartsGridClasses } from '@mui/x-charts';
-import type { ChartsComponents } from '@mui/x-charts/themeAugmentation';
-import { gray } from '../.././theme/themePrimitives';
+import type { Theme } from '@mui/material/styles'
+import { axisClasses, chartsGridClasses, legendClasses } from '@mui/x-charts'
+import type { ChartsComponents } from '@mui/x-charts/themeAugmentation'
+import { gray } from '../.././theme/themePrimitives'
 
-/* eslint-disable import/prefer-default-export */
 export const chartsCustomizations: ChartsComponents<Theme> = {
   MuiChartsAxis: {
     styleOverrides: {
@@ -73,4 +72,4 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
       }),
     },
   },
-};
+}

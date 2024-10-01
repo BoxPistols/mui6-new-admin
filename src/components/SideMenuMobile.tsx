@@ -1,23 +1,26 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import Drawer, { drawerClasses } from '@mui/material/Drawer';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
+import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+import Drawer, { drawerClasses } from '@mui/material/Drawer'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
 
-import MenuButton from './MenuButton';
-import MenuContent from './MenuContent';
-import CardAlert from './CardAlert';
+import CardAlert from './CardAlert'
+import MenuButton from './MenuButton'
+import MenuContent from './MenuContent'
 
 interface SideMenuMobileProps {
-  open: boolean | undefined;
-  toggleDrawer: (newOpen: boolean) => () => void;
+  open: boolean | undefined
+  toggleDrawer: (newOpen: boolean) => () => void
 }
 
-export default function SideMenuMobile({ open, toggleDrawer }: SideMenuMobileProps) {
+export default function SideMenuMobile({
+  open,
+  toggleDrawer,
+}: SideMenuMobileProps) {
   return (
     <Drawer
       anchor="right"
@@ -62,11 +65,15 @@ export default function SideMenuMobile({ open, toggleDrawer }: SideMenuMobilePro
         </Stack>
         <CardAlert />
         <Stack sx={{ p: 2 }}>
-          <Button variant="outlined" fullWidth startIcon={<LogoutRoundedIcon />}>
+          <Button
+            variant="outlined"
+            fullWidth
+            startIcon={<LogoutRoundedIcon />}
+          >
             Logout
           </Button>
         </Stack>
       </Stack>
     </Drawer>
-  );
+  )
 }
