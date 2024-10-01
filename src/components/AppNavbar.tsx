@@ -1,15 +1,15 @@
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import { tabsClasses } from '@mui/material/Tabs';
-import MuiToolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import * as React from 'react';
-import MenuButton from './MenuButton';
-import SideMenuMobile from './SideMenuMobile';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded'
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import { tabsClasses } from '@mui/material/Tabs'
+import MuiToolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
+import * as React from 'react'
+import MenuButton from './MenuButton'
+import SideMenuMobile from './SideMenuMobile'
 
 const Toolbar = styled(MuiToolbar)({
   width: '100%',
@@ -25,14 +25,14 @@ const Toolbar = styled(MuiToolbar)({
     p: '8px',
     pb: 0,
   },
-});
+})
 
 export default function AppNavbar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
+    setOpen(newOpen)
+  }
 
   return (
     <AppBar
@@ -74,7 +74,7 @@ export default function AppNavbar() {
         </Stack>
       </Toolbar>
     </AppBar>
-  );
+  )
 }
 
 export function CustomIcon() {
@@ -99,5 +99,5 @@ export function CustomIcon() {
     >
       <DashboardRoundedIcon color="inherit" sx={{ fontSize: '1rem' }} />
     </Box>
-  );
+  )
 }
