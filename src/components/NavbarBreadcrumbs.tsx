@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs, { breadcrumbsClasses } from '@mui/material/Breadcrumbs';
-import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded'
+import Breadcrumbs, { breadcrumbsClasses } from '@mui/material/Breadcrumbs'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
 
 const StyledBreadcrumbs = styled(Breadcrumbs)(({ theme }) => ({
   margin: theme.spacing(1, 0),
@@ -13,7 +12,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)(({ theme }) => ({
   [`& .${breadcrumbsClasses.ol}`]: {
     alignItems: 'center',
   },
-}));
+}))
 
 export default function NavbarBreadcrumbs() {
   return (
@@ -22,9 +21,12 @@ export default function NavbarBreadcrumbs() {
       separator={<NavigateNextRoundedIcon fontSize="small" />}
     >
       <Typography variant="body1">Dashboard</Typography>
-      <Typography variant="body1" sx={{ color: 'text.primary', fontWeight: 600 }}>
+      <Typography
+        variant="body1"
+        sx={{ color: 'text.primary', fontWeight: 600 }}
+      >
         Home
       </Typography>
     </StyledBreadcrumbs>
-  );
+  )
 }

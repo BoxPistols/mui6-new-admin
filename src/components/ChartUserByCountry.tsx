@@ -1,27 +1,29 @@
-import * as React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import LinearProgress, {
+  linearProgressClasses,
+} from '@mui/material/LinearProgress'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
+import { PieChart } from '@mui/x-charts/PieChart'
+import { useDrawingArea } from '@mui/x-charts/hooks'
+import * as React from 'react'
 
 import {
-  IndiaFlag,
-  UsaFlag,
   BrazilFlag,
   GlobeFlag,
-} from '../internals/components/CustomIcons';
+  IndiaFlag,
+  UsaFlag,
+} from '../internals/components/CustomIcons'
 
 const data = [
   { label: 'India', value: 50000 },
   { label: 'USA', value: 35000 },
   { label: 'Brazil', value: 10000 },
   { label: 'Other', value: 5000 },
-];
+]
 
 const countries = [
   {
@@ -48,10 +50,10 @@ const countries = [
     flag: <GlobeFlag />,
     color: 'hsl(220, 25%, 20%)',
   },
-];
+]
 
 interface StyledTextProps {
-  variant: 'primary' | 'secondary';
+  variant: 'primary' | 'secondary'
 }
 
 const StyledText = styled('text', {
@@ -90,17 +92,17 @@ const StyledText = styled('text', {
       },
     },
   ],
-}));
+}))
 
 interface PieCenterLabelProps {
-  primaryText: string;
-  secondaryText: string;
+  primaryText: string
+  secondaryText: string
 }
 
 function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
-  const { width, height, left, top } = useDrawingArea();
-  const primaryY = top + height / 2 - 10;
-  const secondaryY = primaryY + 24;
+  const { width, height, left, top } = useDrawingArea()
+  const primaryY = top + height / 2 - 10
+  const secondaryY = primaryY + 24
 
   return (
     <React.Fragment>
@@ -111,7 +113,7 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
         {secondaryText}
       </StyledText>
     </React.Fragment>
-  );
+  )
 }
 
 const colors = [
@@ -119,7 +121,7 @@ const colors = [
   'hsl(220, 20%, 42%)',
   'hsl(220, 20%, 35%)',
   'hsl(220, 20%, 25%)',
-];
+]
 
 export default function ChartUserByCountry() {
   return (
@@ -158,9 +160,9 @@ export default function ChartUserByCountry() {
             <PieCenterLabel primaryText="98.5K" secondaryText="Total" />
           </PieChart>
         </Box>
-        {countries.map((country, index) => (
+        {countries.map((country) => (
           <Stack
-            key={index}
+            key={country.name}
             direction="row"
             sx={{ alignItems: 'center', gap: 2, pb: 2 }}
           >
@@ -196,5 +198,5 @@ export default function ChartUserByCountry() {
         ))}
       </CardContent>
     </Card>
-  );
+  )
 }

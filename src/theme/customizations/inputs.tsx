@@ -1,15 +1,13 @@
-import * as React from 'react';
-import { alpha, type Theme, type Components } from '@mui/material/styles';
-import { outlinedInputClasses } from '@mui/material/OutlinedInput';
-import { svgIconClasses } from '@mui/material/SvgIcon';
-import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup';
-import { toggleButtonClasses } from '@mui/material/ToggleButton';
-import CheckBoxOutlineBlankRoundedIcon from '@mui/icons-material/CheckBoxOutlineBlankRounded';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
-import { gray, brand } from '../themePrimitives';
+import CheckBoxOutlineBlankRoundedIcon from '@mui/icons-material/CheckBoxOutlineBlankRounded'
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
+import { svgIconClasses } from '@mui/material/SvgIcon'
+import { toggleButtonClasses } from '@mui/material/ToggleButton'
+import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
+import { type Components, type Theme, alpha } from '@mui/material/styles'
+import { brand, gray } from '../themePrimitives'
 
-/* eslint-disable import/prefer-default-export */
 export const inputsCustomizations: Components<Theme> = {
   MuiButtonBase: {
     defaultProps: {
@@ -314,7 +312,9 @@ export const inputsCustomizations: Components<Theme> = {
     defaultProps: {
       disableRipple: true,
       icon: (
-        <CheckBoxOutlineBlankRoundedIcon sx={{ color: 'hsla(210, 0%, 0%, 0.0)' }} />
+        <CheckBoxOutlineBlankRoundedIcon
+          sx={{ color: 'hsla(210, 0%, 0%, 0.0)' }}
+        />
       ),
       checkedIcon: <CheckRoundedIcon sx={{ height: 14, width: 14 }} />,
       indeterminateIcon: <RemoveRoundedIcon sx={{ height: 14, width: 14 }} />,
@@ -342,7 +342,7 @@ export const inputsCustomizations: Components<Theme> = {
           color: 'white',
           backgroundColor: brand[500],
           borderColor: brand[500],
-          boxShadow: `none`,
+          boxShadow: 'none',
           '&:hover': {
             backgroundColor: brand[600],
           },
@@ -442,4 +442,4 @@ export const inputsCustomizations: Components<Theme> = {
       }),
     },
   },
-};
+}

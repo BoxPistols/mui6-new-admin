@@ -1,115 +1,125 @@
-import * as React from 'react';
-import clsx from 'clsx';
-import { animated, useSpring } from '@react-spring/web';
-import type { TransitionProps } from '@mui/material/transitions';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Collapse from '@mui/material/Collapse';
-import Typography from '@mui/material/Typography';
-import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import {
-  unstable_useTreeItem2 as useTreeItem2,
-  type UseTreeItem2Parameters,
-} from '@mui/x-tree-view/useTreeItem2';
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Collapse from '@mui/material/Collapse'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
+import type { TransitionProps } from '@mui/material/transitions'
+import { RichTreeView } from '@mui/x-tree-view/RichTreeView'
 import {
   TreeItem2Content,
   TreeItem2IconContainer,
   TreeItem2Label,
   TreeItem2Root,
-} from '@mui/x-tree-view/TreeItem2';
-import { TreeItem2Icon } from '@mui/x-tree-view/TreeItem2Icon';
-import { TreeItem2Provider } from '@mui/x-tree-view/TreeItem2Provider';
-import type { TreeViewBaseItem } from '@mui/x-tree-view/models';
-import { useTheme } from '@mui/material/styles';
+} from '@mui/x-tree-view/TreeItem2'
+import { TreeItem2Icon } from '@mui/x-tree-view/TreeItem2Icon'
+import { TreeItem2Provider } from '@mui/x-tree-view/TreeItem2Provider'
+import type { TreeViewBaseItem } from '@mui/x-tree-view/models'
+import {
+  type UseTreeItem2Parameters,
+  unstable_useTreeItem2 as useTreeItem2,
+} from '@mui/x-tree-view/useTreeItem2'
+import type { UseTreeItem2ReturnValue } from '@mui/x-tree-view/useTreeItem2'
+import { animated, useSpring } from '@react-spring/web'
+import clsx from 'clsx'
+import * as React from 'react'
 
-type Color = 'blue' | 'green';
+// カラーの型定義
+type Color = 'blue' | 'green'
 
+// ツリーアイテムの拡張プロパティの型定義
 type ExtendedTreeItemProps = {
-  color?: Color;
-  id: string;
-  label: string;
-};
+  color?: Color
+  id: string
+  label: string
+}
 
+// ツリーデータの定義
 const ITEMS: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
   {
     id: '1',
-    label: 'Website',
+    label: 'ウェブサイト',
     children: [
-      { id: '1.1', label: 'Home', color: 'green' },
-      { id: '1.2', label: 'Pricing', color: 'green' },
-      { id: '1.3', label: 'About us', color: 'green' },
+      { id: '1.1', label: 'ホーム', color: 'green' },
+      { id: '1.2', label: '価格', color: 'green' },
+      { id: '1.3', label: '会社概要', color: 'green' },
       {
         id: '1.4',
-        label: 'Blog',
+        label: 'ブログ',
         children: [
-          { id: '1.1.1', label: 'Announcements', color: 'blue' },
-          { id: '1.1.2', label: 'April lookahead', color: 'blue' },
-          { id: '1.1.3', label: "What's new", color: 'blue' },
-          { id: '1.1.4', label: 'Meet the team', color: 'blue' },
+          { id: '1.1.1', label: 'お知らせ', color: 'blue' },
+          { id: '1.1.2', label: '4月の予定', color: 'blue' },
+          { id: '1.1.3', label: '新着情報', color: 'blue' },
+          { id: '1.1.4', label: 'チーム紹介', color: 'blue' },
         ],
       },
     ],
   },
   {
     id: '2',
-    label: 'Store',
+    label: 'ストア',
     children: [
-      { id: '2.1', label: 'All products', color: 'green' },
+      { id: '2.1', label: '全製品', color: 'green' },
       {
         id: '2.2',
-        label: 'Categories',
+        label: 'カテゴリー',
         children: [
-          { id: '2.2.1', label: 'Gadgets', color: 'blue' },
-          { id: '2.2.2', label: 'Phones', color: 'blue' },
-          { id: '2.2.3', label: 'Wearables', color: 'blue' },
+          { id: '2.2.1', label: 'ガジェット', color: 'blue' },
+          { id: '2.2.2', label: 'スマートフォン', color: 'blue' },
+          { id: '2.2.3', label: 'ウェアラブル', color: 'blue' },
         ],
       },
-      { id: '2.3', label: 'Bestsellers', color: 'green' },
-      { id: '2.4', label: 'Sales', color: 'green' },
+      { id: '2.3', label: 'ベストセラー', color: 'green' },
+      { id: '2.4', label: 'セール', color: 'green' },
     ],
   },
-  { id: '4', label: 'Contact', color: 'blue' },
-  { id: '5', label: 'Help', color: 'blue' },
-];
+  { id: '4', label: 'お問い合わせ', color: 'blue' },
+  { id: '5', label: 'ヘルプ', color: 'blue' },
+]
 
+// ドットアイコンコンポーネント
 function DotIcon({ color }: { color: string }) {
   return (
     <Box sx={{ marginRight: 1, display: 'flex', alignItems: 'center' }}>
       <svg width={6} height={6}>
+        <title>ドットアイコン</title>
         <circle cx={3} cy={3} r={3} fill={color} />
       </svg>
     </Box>
-  );
+  )
 }
 
-const AnimatedCollapse = animated(Collapse);
+// アニメーション付きCollapseコンポーネント
+const AnimatedCollapse = animated(Collapse)
 
+// トランジションコンポーネント
 function TransitionComponent(props: TransitionProps) {
   const style = useSpring({
     to: {
       opacity: props.in ? 1 : 0,
       transform: `translate3d(0,${props.in ? 0 : 20}px,0)`,
     },
-  });
+  })
 
-  return <AnimatedCollapse style={style} {...props} />;
+  return <AnimatedCollapse style={style} {...props} />
 }
 
+// カスタムラベルのプロパティ型定義
 interface CustomLabelProps {
-  children: React.ReactNode;
-  color?: Color;
-  expandable?: boolean;
+  children: React.ReactNode
+  color?: Color
+  expandable?: boolean
 }
 
-function CustomLabel({ color, expandable, children, ...other }: CustomLabelProps) {
-  const theme = useTheme();
+// カスタムラベルコンポーネント
+function CustomLabel({ color, children, ...other }: CustomLabelProps) {
+  const theme = useTheme()
   const colors = {
     blue: (theme.vars || theme).palette.primary.main,
     green: (theme.vars || theme).palette.success.main,
-  };
+  }
 
-  const iconColor = color ? colors[color] : null;
+  const iconColor = color ? colors[color] : null
   return (
     <TreeItem2Label {...other} sx={{ display: 'flex', alignItems: 'center' }}>
       {iconColor && <DotIcon color={iconColor} />}
@@ -121,18 +131,20 @@ function CustomLabel({ color, expandable, children, ...other }: CustomLabelProps
         {children}
       </Typography>
     </TreeItem2Label>
-  );
+  )
 }
 
+// カスタムツリーアイテムのプロパティ型定義
 interface CustomTreeItemProps
   extends Omit<UseTreeItem2Parameters, 'rootRef'>,
     Omit<React.HTMLAttributes<HTMLLIElement>, 'onFocus'> {}
 
+// カスタムツリーアイテムコンポーネント
 const CustomTreeItem = React.forwardRef(function CustomTreeItem(
   props: CustomTreeItemProps,
   ref: React.Ref<HTMLLIElement>,
 ) {
-  const { id, itemId, label, disabled, children, ...other } = props;
+  const { id, itemId, label, disabled, children, ...other } = props
 
   const {
     getRootProps,
@@ -142,10 +154,24 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
     getGroupTransitionProps,
     status,
     publicAPI,
-  } = useTreeItem2({ id, itemId, children, label, disabled, rootRef: ref });
+  } = useTreeItem2({
+    id,
+    itemId,
+    children,
+    label,
+    disabled,
+    rootRef: ref,
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  }) as UseTreeItem2ReturnValue<any, any> & {
+    publicAPI: {
+      getItem: (
+        id: string,
+      ) => TreeViewBaseItem<ExtendedTreeItemProps> | undefined
+    }
+  }
 
-  const item = publicAPI.getItem(itemId);
-  const color = item?.color;
+  const item = publicAPI.getItem(itemId)
+  const color = item?.color
   return (
     <TreeItem2Provider itemId={itemId}>
       <TreeItem2Root {...getRootProps(other)}>
@@ -174,9 +200,10 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
         )}
       </TreeItem2Root>
     </TreeItem2Provider>
-  );
-});
+  )
+})
 
+// メインのツリービューコンポーネント
 export default function CustomizedTreeView() {
   return (
     <Card
@@ -185,11 +212,11 @@ export default function CustomizedTreeView() {
     >
       <CardContent>
         <Typography component="h2" variant="subtitle2">
-          Product tree
+          製品ツリー
         </Typography>
         <RichTreeView
           items={ITEMS}
-          aria-label="pages"
+          aria-label="ページ"
           multiSelect
           defaultExpandedItems={['1', '1.1']}
           defaultSelectedItems={['1.1', '1.1.1']}
@@ -204,5 +231,5 @@ export default function CustomizedTreeView() {
         />
       </CardContent>
     </Card>
-  );
+  )
 }

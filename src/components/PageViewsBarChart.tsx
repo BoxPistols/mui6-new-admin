@@ -1,19 +1,35 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Chip from '@mui/material/Chip';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import { BarChart } from '@mui/x-charts/BarChart';
-import { useTheme } from '@mui/material/styles';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Chip from '@mui/material/Chip'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { type Theme, useTheme } from '@mui/material/styles'
+import { BarChart } from '@mui/x-charts/BarChart'
+import * as React from 'react'
+
+// Type guard function
+function isThemeWithVars(theme: Theme): theme is Theme & { vars: Theme } {
+  return 'vars' in theme
+}
 
 export default function PageViewsBarChart() {
-  const theme = useTheme();
-  const colorPalette = [
-    (theme.vars || theme).palette.primary.dark,
-    (theme.vars || theme).palette.primary.main,
-    (theme.vars || theme).palette.primary.light,
-  ];
+  const theme = useTheme()
+
+  const colorPalette = React.useMemo(() => {
+    if (isThemeWithVars(theme)) {
+      return [
+        theme.vars.palette.primary.dark,
+        theme.vars.palette.primary.main,
+        theme.vars.palette.primary.light,
+      ]
+    }
+    return [
+      theme.palette.primary.dark,
+      theme.palette.primary.main,
+      theme.palette.primary.light,
+    ]
+  }, [theme])
+
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
       <CardContent>
@@ -48,7 +64,7 @@ export default function PageViewsBarChart() {
                 categoryGapRatio: 0.5,
                 data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
               },
-            ] as any
+            ] as never
           }
           series={[
             {
@@ -81,5 +97,5 @@ export default function PageViewsBarChart() {
         />
       </CardContent>
     </Card>
-  );
+  )
 }
