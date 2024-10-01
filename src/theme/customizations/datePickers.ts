@@ -1,12 +1,17 @@
-import { alpha, type Theme } from '@mui/material/styles';
+import { menuItemClasses } from '@mui/material/MenuItem';
+import { type Theme, alpha } from '@mui/material/styles';
+import {
+  pickersDayClasses,
+  pickersMonthClasses,
+  pickersYearClasses,
+} from '@mui/x-date-pickers';
 import type { PickersProComponents } from '@mui/x-date-pickers-pro/themeAugmentation';
 import type { PickerComponents } from '@mui/x-date-pickers/themeAugmentation';
-import { pickersYearClasses, pickersMonthClasses, pickersDayClasses } from '@mui/x-date-pickers';
-import { menuItemClasses } from '@mui/material/MenuItem';
-import { gray, brand } from '../.././theme/themePrimitives';
+import { brand, gray } from '../.././theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
-export const datePickersCustomizations: PickersProComponents<Theme> & PickerComponents<Theme> = {
+export const datePickersCustomizations: PickersProComponents<Theme> &
+  PickerComponents<Theme> = {
   MuiPickersPopper: {
     styleOverrides: {
       paper: ({ theme }) => ({
@@ -83,7 +88,9 @@ export const datePickersCustomizations: PickersProComponents<Theme> & PickerComp
             outline: `3px solid ${alpha(brand[500], 0.5)}`,
             outlineOffset: '2px',
             backgroundColor: 'transparent',
-            [`&.${pickersMonthClasses.selected}`]: { backgroundColor: gray[300] },
+            [`&.${pickersMonthClasses.selected}`]: {
+              backgroundColor: gray[300],
+            },
           },
         }),
       }),
@@ -124,7 +131,9 @@ export const datePickersCustomizations: PickersProComponents<Theme> & PickerComp
             outline: `3px solid ${alpha(brand[500], 0.5)}`,
             outlineOffset: '2px',
             backgroundColor: 'transparent',
-            [`&.${pickersYearClasses.selected}`]: { backgroundColor: gray[300] },
+            [`&.${pickersYearClasses.selected}`]: {
+              backgroundColor: gray[300],
+            },
           },
         }),
       }),

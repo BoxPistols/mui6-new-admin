@@ -36,14 +36,14 @@ function ButtonField(props: ButtonFieldProps) {
 
   return (
     <Button
-      variant='outlined'
+      variant="outlined"
       id={id}
       disabled={disabled}
       ref={ref}
       aria-label={ariaLabel}
-      size='small'
+      size="small"
       onClick={() => setOpen?.((prev) => !prev)}
-      startIcon={<CalendarTodayRoundedIcon fontSize='small' />}
+      startIcon={<CalendarTodayRoundedIcon fontSize="small" />}
       sx={{ minWidth: 'fit-content' }}
     >
       {label ? `${label}` : 'Pick a date'}

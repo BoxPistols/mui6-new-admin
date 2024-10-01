@@ -1,18 +1,19 @@
+import { checkboxClasses } from '@mui/material/Checkbox';
+import { iconButtonClasses } from '@mui/material/IconButton';
+import { listClasses } from '@mui/material/List';
+import { listItemIconClasses } from '@mui/material/ListItemIcon';
+import { menuItemClasses } from '@mui/material/MenuItem';
 import { paperClasses } from '@mui/material/Paper';
-import { alpha, type Theme } from '@mui/material/styles';
+import { tablePaginationClasses } from '@mui/material/TablePagination';
+import { type Theme, alpha } from '@mui/material/styles';
+import { gridClasses } from '@mui/x-data-grid';
 import type { DataGridProComponents } from '@mui/x-data-grid-pro/themeAugmentation';
 import type { DataGridComponents } from '@mui/x-data-grid/themeAugmentation';
-import { menuItemClasses } from '@mui/material/MenuItem';
-import { listItemIconClasses } from '@mui/material/ListItemIcon';
-import { iconButtonClasses } from '@mui/material/IconButton';
-import { checkboxClasses } from '@mui/material/Checkbox';
-import { listClasses } from '@mui/material/List';
-import { gridClasses } from '@mui/x-data-grid';
-import { tablePaginationClasses } from '@mui/material/TablePagination';
 import { gray } from '../.././theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
-export const dataGridCustomizations: DataGridProComponents<Theme> & DataGridComponents<Theme> = {
+export const dataGridCustomizations: DataGridProComponents<Theme> &
+  DataGridComponents<Theme> = {
   MuiDataGrid: {
     styleOverrides: {
       root: ({ theme }) => ({
@@ -43,7 +44,9 @@ export const dataGridCustomizations: DataGridProComponents<Theme> & DataGridComp
           },
         },
       }),
-      cell: ({ theme }) => ({ borderTopColor: (theme.vars || theme).palette.divider }),
+      cell: ({ theme }) => ({
+        borderTopColor: (theme.vars || theme).palette.divider,
+      }),
       menu: ({ theme }) => ({
         borderRadius: theme.shape.borderRadius,
         backgroundImage: 'none',
@@ -64,7 +67,9 @@ export const dataGridCustomizations: DataGridProComponents<Theme> & DataGridComp
       }),
 
       row: ({ theme }) => ({
-        '&:last-of-type': { borderBottom: `1px solid ${(theme.vars || theme).palette.divider}` },
+        '&:last-of-type': {
+          borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
+        },
         '&:hover': {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },

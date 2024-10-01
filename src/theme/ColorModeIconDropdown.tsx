@@ -1,4 +1,3 @@
-import * as React from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightModeOutlined';
 import Box from '@mui/material/Box';
@@ -6,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useColorScheme } from '@mui/material/styles';
+import * as React from 'react';
 
 export default function ColorModeIconDropdown() {
   const { mode, systemMode, setMode } = useColorScheme();

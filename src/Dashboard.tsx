@@ -34,7 +34,7 @@ export default function Dashboard(props: { disableCustomTheme?: boolean }) {
         <AppNavbar />
         {/* Main content */}
         <Box
-          component='main'
+          component="main"
           sx={(theme) => ({
             flexGrow: 1,
             backgroundColor: alpha(theme.palette.background.default, 1),
