@@ -1,6 +1,5 @@
 import Badge, { badgeClasses } from '@mui/material/Badge'
 import IconButton, { type IconButtonProps } from '@mui/material/IconButton'
-import * as React from 'react'
 
 export interface MenuButtonProps extends IconButtonProps {
   showBadge?: boolean

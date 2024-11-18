@@ -1,6 +1,5 @@
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded'
 import Stack from '@mui/material/Stack'
-import * as React from 'react'
 import ColorModeIconDropdown from '.././theme/ColorModeIconDropdown'
 import CustomDatePicker from './CustomDatePicker'
 import MenuButton from './MenuButton'

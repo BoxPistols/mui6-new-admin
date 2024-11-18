@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import * as React from 'react'
 
 export default function HighlightedCard() {
   const theme = useTheme()

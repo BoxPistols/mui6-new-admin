@@ -17,75 +17,82 @@ import { TreeItem2Provider } from '@mui/x-tree-view/TreeItem2Provider'
 import type { TreeViewBaseItem } from '@mui/x-tree-view/models'
 import {
   type UseTreeItem2Parameters,
+  type UseTreeItem2Return,
   unstable_useTreeItem2 as useTreeItem2,
 } from '@mui/x-tree-view/useTreeItem2'
 import { animated, useSpring } from '@react-spring/web'
 import clsx from 'clsx'
 import * as React from 'react'
 
+// カラーの型定義
 type Color = 'blue' | 'green'
 
+// ツリーアイテムの拡張プロパティの型定義
 type ExtendedTreeItemProps = {
   color?: Color
   id: string
   label: string
 }
 
+// ツリーデータの定義
 const ITEMS: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
   {
     id: '1',
-    label: 'Website',
+    label: 'ウェブサイト',
     children: [
-      { id: '1.1', label: 'Home', color: 'green' },
-      { id: '1.2', label: 'Pricing', color: 'green' },
-      { id: '1.3', label: 'About us', color: 'green' },
+      { id: '1.1', label: 'ホーム', color: 'green' },
+      { id: '1.2', label: '価格', color: 'green' },
+      { id: '1.3', label: '会社概要', color: 'green' },
       {
         id: '1.4',
-        label: 'Blog',
+        label: 'ブログ',
         children: [
-          { id: '1.1.1', label: 'Announcements', color: 'blue' },
-          { id: '1.1.2', label: 'April lookahead', color: 'blue' },
-          { id: '1.1.3', label: "What's new", color: 'blue' },
-          { id: '1.1.4', label: 'Meet the team', color: 'blue' },
+          { id: '1.1.1', label: 'お知らせ', color: 'blue' },
+          { id: '1.1.2', label: '4月の予定', color: 'blue' },
+          { id: '1.1.3', label: '新着情報', color: 'blue' },
+          { id: '1.1.4', label: 'チーム紹介', color: 'blue' },
         ],
       },
     ],
   },
   {
     id: '2',
-    label: 'Store',
+    label: 'ストア',
     children: [
-      { id: '2.1', label: 'All products', color: 'green' },
+      { id: '2.1', label: '全製品', color: 'green' },
       {
         id: '2.2',
-        label: 'Categories',
+        label: 'カテゴリー',
         children: [
-          { id: '2.2.1', label: 'Gadgets', color: 'blue' },
-          { id: '2.2.2', label: 'Phones', color: 'blue' },
-          { id: '2.2.3', label: 'Wearables', color: 'blue' },
+          { id: '2.2.1', label: 'ガジェット', color: 'blue' },
+          { id: '2.2.2', label: 'スマートフォン', color: 'blue' },
+          { id: '2.2.3', label: 'ウェアラブル', color: 'blue' },
         ],
       },
-      { id: '2.3', label: 'Bestsellers', color: 'green' },
-      { id: '2.4', label: 'Sales', color: 'green' },
+      { id: '2.3', label: 'ベストセラー', color: 'green' },
+      { id: '2.4', label: 'セール', color: 'green' },
     ],
   },
-  { id: '4', label: 'Contact', color: 'blue' },
-  { id: '5', label: 'Help', color: 'blue' },
+  { id: '4', label: 'お問い合わせ', color: 'blue' },
+  { id: '5', label: 'ヘルプ', color: 'blue' },
 ]
 
+// ドットアイコンコンポーネント
 function DotIcon({ color }: { color: string }) {
   return (
     <Box sx={{ marginRight: 1, display: 'flex', alignItems: 'center' }}>
       <svg width={6} height={6}>
-        <title>Dot icon</title>
+        <title>ドットアイコン</title>
         <circle cx={3} cy={3} r={3} fill={color} />
       </svg>
     </Box>
   )
 }
 
+// アニメーション付きCollapseコンポーネント
 const AnimatedCollapse = animated(Collapse)
 
+// トランジションコンポーネント
 function TransitionComponent(props: TransitionProps) {
   const style = useSpring({
     to: {
@@ -97,12 +104,14 @@ function TransitionComponent(props: TransitionProps) {
   return <AnimatedCollapse style={style} {...props} />
 }
 
+// カスタムラベルのプロパティ型定義
 interface CustomLabelProps {
   children: React.ReactNode
   color?: Color
   expandable?: boolean
 }
 
+// カスタムラベルコンポーネント
 function CustomLabel({ color, children, ...other }: CustomLabelProps) {
   const theme = useTheme()
   const colors = {
@@ -125,10 +134,12 @@ function CustomLabel({ color, children, ...other }: CustomLabelProps) {
   )
 }
 
+// カスタムツリーアイテムのプロパティ型定義
 interface CustomTreeItemProps
   extends Omit<UseTreeItem2Parameters, 'rootRef'>,
     Omit<React.HTMLAttributes<HTMLLIElement>, 'onFocus'> {}
 
+// カスタムツリーアイテムコンポーネント
 const CustomTreeItem = React.forwardRef(function CustomTreeItem(
   props: CustomTreeItemProps,
   ref: React.Ref<HTMLLIElement>,
@@ -143,7 +154,20 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
     getGroupTransitionProps,
     status,
     publicAPI,
-  } = useTreeItem2({ id, itemId, children, label, disabled, rootRef: ref })
+  } = useTreeItem2({
+    id,
+    itemId,
+    children,
+    label,
+    disabled,
+    rootRef: ref,
+  }) as UseTreeItem2Return & {
+    publicAPI: {
+      getItem: (
+        id: string,
+      ) => TreeViewBaseItem<ExtendedTreeItemProps> | undefined
+    }
+  }
 
   const item = publicAPI.getItem(itemId)
   const color = item?.color
@@ -178,6 +202,7 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
   )
 })
 
+// メインのツリービューコンポーネント
 export default function CustomizedTreeView() {
   return (
     <Card
@@ -186,11 +211,11 @@ export default function CustomizedTreeView() {
     >
       <CardContent>
         <Typography component="h2" variant="subtitle2">
-          Product tree
+          製品ツリー
         </Typography>
         <RichTreeView
           items={ITEMS}
-          aria-label="pages"
+          aria-label="ページ"
           multiSelect
           defaultExpandedItems={['1', '1.1']}
           defaultSelectedItems={['1.1', '1.1.1']}

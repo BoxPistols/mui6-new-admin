@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
 import { areaElementClasses } from '@mui/x-charts/LineChart'
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart'
-import * as React from 'react'
 
 export type StatCardProps = {
   title: string
