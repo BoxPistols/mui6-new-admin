@@ -17,9 +17,9 @@ import { TreeItem2Provider } from '@mui/x-tree-view/TreeItem2Provider'
 import type { TreeViewBaseItem } from '@mui/x-tree-view/models'
 import {
   type UseTreeItem2Parameters,
-  type UseTreeItem2Return,
   unstable_useTreeItem2 as useTreeItem2,
 } from '@mui/x-tree-view/useTreeItem2'
+import type { UseTreeItem2ReturnValue } from '@mui/x-tree-view/useTreeItem2'
 import { animated, useSpring } from '@react-spring/web'
 import clsx from 'clsx'
 import * as React from 'react'
@@ -161,7 +161,8 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
     label,
     disabled,
     rootRef: ref,
-  }) as UseTreeItem2Return & {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  }) as UseTreeItem2ReturnValue<any, any> & {
     publicAPI: {
       getItem: (
         id: string,
