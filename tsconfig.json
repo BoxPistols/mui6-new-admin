@@ -6,7 +6,8 @@
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
-    "moduleResolution": "node", // bundlerからnodeに変更
+    "moduleResolution": "node",
+    // bundlerからnodeに変更
     "resolveJsonModule": true, // moduleResolutionがnodeであればこの設定を使用できます
     "isolatedModules": true,
     "noEmit": true,

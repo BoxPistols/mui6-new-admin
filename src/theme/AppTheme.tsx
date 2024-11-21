@@ -1,10 +1,10 @@
-import { type Theme, ThemeProvider, createTheme } from '@mui/material/styles'
+import { type Theme, createTheme } from '@mui/material/styles'
 import type {
   PaletteColor,
   ThemeOptions,
   TypeBackground,
 } from '@mui/material/styles'
-import * as React from 'react'
+import { useMemo } from 'react'
 import { dataDisplayCustomizations } from './customizations/dataDisplay'
 import { feedbackCustomizations } from './customizations/feedback'
 import { inputsCustomizations } from './customizations/inputs'
@@ -12,8 +12,7 @@ import { navigationCustomizations } from './customizations/navigation'
 import { surfacesCustomizations } from './customizations/surfaces'
 import { colorSchemes, shadows, shape, typography } from './themePrimitives'
 
-interface AppThemeProps {
-  children: React.ReactNode
+interface UseAppThemeProps {
   disableCustomTheme?: boolean
   themeComponents?: ThemeOptions['components']
 }
@@ -34,7 +33,6 @@ type ThemeValueType =
 
 type ThemePropertyPath = (string | number)[]
 
-// カスタム型を定義して vars プロパティを含める
 interface ThemeWithVars extends Theme {
   vars?: {
     palette: Theme['palette']
@@ -42,7 +40,6 @@ interface ThemeWithVars extends Theme {
   }
 }
 
-// 型ガード関数
 function isThemeWithVars(theme: Theme): theme is ThemeWithVars {
   return 'vars' in theme
 }
@@ -76,12 +73,11 @@ function getThemeValue(theme: Theme, path: ThemePropertyPath): ThemeValueType {
   return value !== undefined ? value : fallbackValue
 }
 
-export default function AppTheme({
-  children,
+export function useAppTheme({
   disableCustomTheme,
   themeComponents,
-}: AppThemeProps) {
-  const theme = React.useMemo(() => {
+}: UseAppThemeProps) {
+  return useMemo(() => {
     if (disableCustomTheme) {
       return createTheme()
     }
@@ -105,24 +101,12 @@ export default function AppTheme({
       },
     })
 
-    const augmentedTheme = {
+    return {
       ...baseTheme,
       getThemeValue: (path: ThemePropertyPath) =>
         getThemeValue(baseTheme, path),
-    }
-
-    return augmentedTheme
+    } as Theme
   }, [disableCustomTheme, themeComponents])
-
-  if (disableCustomTheme) {
-    return children
-  }
-
-  return (
-    <ThemeProvider theme={theme} disableTransitionOnChange>
-      {children}
-    </ThemeProvider>
-  )
 }
 
 declare module '@mui/material/styles' {
